@@ -5,6 +5,8 @@ var app = express();
 
 app.use(express.static(__dirname + '/app'));
 
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
 app.set('views', __dirname+ '/views');
 app.set('view engine', 'ejs');
 
