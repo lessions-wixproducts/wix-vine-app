@@ -19,6 +19,7 @@ module.exports = function (config) {
       'bower_components/angular-loading-bar/src/loading-bar.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/underscore/underscore.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
