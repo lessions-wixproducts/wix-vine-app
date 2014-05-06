@@ -6,17 +6,25 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('vineApp'));
 
   var MainCtrl,
-    scope;
+    scope,
+    wixservice;
+    var mySettings = {
+      standAlone: false
+    }
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    wixservice = jasmine.createSpyObj('wixService', ['navigate', 'pushState']);
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope,
+      Wixservice: wixservice,
+      mySettings: mySettings
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should call wixservice navigate with the given keyword', function () {
+    scope.search('keyword');
+    expect(wixservice.navigate).toHaveBeenCalledWith('keyword/6', jasmine.any(Function));
   });
 });
