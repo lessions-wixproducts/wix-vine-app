@@ -17,7 +17,7 @@ exports.search = function(req, res){
 };
 
 exports.settings = function(req, res){
-    res.render('index', { });
+    res.redirect('/#/settings');
 };
 
 exports.vinePopular = function(req, res){

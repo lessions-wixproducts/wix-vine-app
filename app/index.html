@@ -12,13 +12,20 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="../bower_components/angular-loading-bar/src/loading-bar.css" />
+    <link rel="stylesheet" href="../bower_components/wix-ui-lib2/ui-lib.min.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <style wix-style>
+        #mybutton {
+            background-color: {{style.bgColor color-7}};
+            color: {{style.textColor color-10}};
+        }
+    </style>
 </head>
-<body ng-app="vineApp">
+<body wix-ui ng-app="vineApp">
 <div class="container" ng-view=""></div>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -57,6 +64,8 @@
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
 <script src="../bower_components/underscore/underscore.js"></script>
 <script src="../bower_components/angular-loading-bar/src/loading-bar.js"></script>
+<script src="http://sslstatic.wix.com/services/js-sdk/1.28.0/js/Wix.js"></script>
+<script src="../bower_components/wix-ui-lib2/ui-lib.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -67,9 +76,11 @@
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/video.js"></script>
 <script src="scripts/controllers/search.js"></script>
+<script src="scripts/controllers/settings.js"></script>
 <script src="scripts/directives/metavideo.js"></script>
 <script src="scripts/controllers/popular.js"></script>
 <script src="scripts/services/wixservice.js"></script>
+<script src="scripts/services/wixuiservice.js"></script>
 <!-- endbuild -->
 </body>
 
