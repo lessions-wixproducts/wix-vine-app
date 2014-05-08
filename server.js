@@ -18,7 +18,7 @@ app.get('/vine/:videoId', routes.vineGetVideo);
 
 //Templates
 app.get('/widget', routes.widget);
-app.get('/settings', routes.settings);
+app.get('/settings', authenticate, routes.settings);
 app.get('/search/:q?/:size?', routes.search);
 
 

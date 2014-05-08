@@ -1,47 +1,35 @@
 var url = require('url');
-var APP_SECRET = '2a918fb5-3c64-42fd-a429-44ee53c59fe7';
-var crypto = require("crypto");
+var APP_SECRET = '4df73746-86c7-4404-8ff5-653e055e61f4'; // <---------- REPLACE THIS WITH YOUR OWN
+var APP_ID = '136c2bed-4f4d-c4dd-e7c2-acbaaede235f'; // <---------- REPLACE THIS WITH YOUR OWN
+var wix = require( 'openapi-node' );
 
 function Authentication() {
     this.authenticate = function(req, res, next) {
-        var url_parts = url.parse(req.url, true);
-        var query = url_parts.query;
-        if (query.instance || query.origCompId || query.compId) {
-            verify = verifyInstance(query.instance, APP_SECRET);
-            if (verify.valid) {
-                var key = JSON.parse(verify.key).instanceId + ':';
-                if (query.origCompId) {
-                    key = key + query.origCompId;
-                } else if (query.compId) {
-                    key = key + query.compId;
-                }
-                req.key = key;
-                next();
-            } else {
-                res.render('invalid-secret');
-            }
-        } else {
-            res.render('invalid-secret');
+
+        var instance = req.query.instance;
+
+        try {
+
+            console.log('Starting Wix Init..');
+
+            // Parse the instance parameter
+            var wixInstance = wix.getConnect().parseInstance(instance, APP_SECRET);
+            var instanceId = wixInstance.instanceId;
+
+            // Get a shortcut for the Wix RESTful API
+            var wixAPI = wix.getAPI(APP_SECRET, APP_ID, instanceId);
+
+            console.log("Once you've reached this point you're good to use the Wix API, otherwise an exception will be thrown.");
+
+            req.key = instance;
+            req.wixAPI = wixAPI;
+            next();
+
+        } catch(e) {
+            console.log( "Wix API init failed: " + e.message );
+            res.send('invalid-secret');
         }
     }
-}
-
-function verifyInstance(instance, secret) {
-    // spilt the instance into signature and data
-    var pair = instance.split('.');
-    var signature = decode(pair[0], 'binary');
-    var data = pair[1];
-    // sign the data using hmac-sha1-256
-    var hmac = crypto.createHmac('sha256', secret);
-    var newSignature = hmac.update(data).digest('binary');
-    return {valid: signature === newSignature,
-        key: new Buffer(data, 'base64').toString()};
-}
-
-function decode(data, encoding) {
-    encoding = encoding === undefined ? 'utf8' : encoding
-    var buf = new Buffer(data.replace(/-/g, '+').replace(/_/g, '/'), 'base64')
-    return encoding ? buf.toString(encoding) : buf;
 }
 
 module.exports = Authentication;
