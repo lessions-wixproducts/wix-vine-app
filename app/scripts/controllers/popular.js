@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('vineApp')
-  .controller('PopularCtrl', function ($scope, $sce, $routeParams, Popular, DataService) {
+  .controller('PopularCtrl', function ($scope, $sce, $routeParams, Popular, DataService, WixUIService) {
+
+    WixUIService.init();
+
     Popular.query({size: $routeParams.size || 4}, function (data) {
       var videos = data;
       _.each(videos, function (video) {

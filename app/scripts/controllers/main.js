@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('vineApp')
-  .controller('MainCtrl', function ($scope, Wixservice, $routeParams, $location, mySettings) {
+  .controller('MainCtrl', function ($scope, Wixservice, $routeParams, $location, mySettings, WixUIService) {
+
+    WixUIService.init();
+
     $scope.search = function (q) {
       if(mySettings.standAlone){
         $location.path('search/' + q + '/6');

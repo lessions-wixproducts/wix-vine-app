@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('vineApp')
-  .controller('VideoCtrl', function ($scope, $routeParams, $sce, Video, DataService, Wixservice, mySettings) {
+  .controller('VideoCtrl', function ($scope, $routeParams, $sce, Video, DataService, Wixservice, mySettings, WixUIService) {
+
+    WixUIService.init();
+
     if(!mySettings.standAlone){
       Wixservice.pushState('video/' + $routeParams.id);
     }
