@@ -8,16 +8,24 @@ exports.widget = function(req, res){
 exports.search = function(req, res){
     var q = req.params.q || 'wix';
     var size = req.params.size || '6';
-    var query = "?";
-    _.each(req.query, function(value, key){
-        query += (key + "=" + encodeURIComponent(value) + "&");
-    });
-    query = query.substring(0, query.length - 1);
-    res.redirect(query + '/#/search/' + q + '/' + size);
+    var query = getQueryString(req.query);
+
+    /**
+     * The Wix SDK must be provided with the PostMessage parameters.
+     * When redirecting, it's crucial to pass on those parameters.
+     */
+    res.redirect(query + '#/search/' + q + '/' + size); // Adding a proceeding '/' will result in SDK parameter parsing errors
 };
 
 exports.settings = function(req, res){
-    res.redirect('/#/settings');
+
+    var query = getQueryString(req.query);
+
+    /**
+     * The Wix SDK must be provided with the PostMessage parameters.
+     * When redirecting, it's crucial to pass on those parameters.
+     */
+    res.redirect(query + '#/settings'); // Adding a proceeding '/' will result in SDK parameter parsing errors
 };
 
 exports.vinePopular = function(req, res){
@@ -40,3 +48,16 @@ exports.vineGetVideo = function(req, res){
         res.end(JSON.stringify(data));
     });
 };
+
+/**
+ * Parses the Post Message parameters
+ * @param request parameters
+ * @returns concatenated query params
+ */
+function getQueryString(q) {
+    var query = "?";
+    _.each(q, function(value, key){
+        query += (key + "=" + encodeURIComponent(value) + "&");
+    });
+    return query.substring(0, query.length - 1);
+}
