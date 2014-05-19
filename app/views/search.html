@@ -1,10 +1,12 @@
-<div class="jumbotron">
-    <h2>Vine App</h2>
-    <p class="lead">Search for Vine videos, or see <span ng-click="search('popular')">popular</span> videos.</p>
-</div>
-<form class="form-inline" ng-submit="search(q || 'wix')">
-    <div>
-        <input type="text" class="form-control" ng-model="q" placeholder="Search vine.co" tabindex="1" focused="focused">
-        <button type="submit" ng-click="search(q || 'wix')" class="btn btn-primary">Search</button>
+<div ng-controller="MainCtrl" ng-init="init()">
+    <div class="jumbotron">
+        <h2>Vine App</h2>
+        <p class="lead">Search for Vine videos, or see <span ng-click="search('popular')">popular</span> videos.</p>
     </div>
-</form>
+    <form class="form-inline" ng-submit="search(q || 'wix')">
+        <div>
+            <input type="text" class="form-control" ng-model="q" placeholder="Search vine.co" tabindex="1" focused="focused">
+            <button id="mybutton" type="submit" ng-click="search(q || 'wix')" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>

@@ -26,8 +26,7 @@ function Authentication() {
             next();
 
         } catch(e) {
-            console.log( "Wix API init failed: " + e.message );
-            res.send('invalid-secret');
+            res.send( "Wix API init failed: " + e.message );
         }
     }
 }

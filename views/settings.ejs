@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <script>
-        var settings = <%- settings %>;
-    </script>
-
     <style wix-style>
         body {
             font: {{style.fontStyle}};
@@ -93,12 +89,15 @@
 <script src="scripts/services/wixuiservice.js"></script>
 <script src="scripts/services/appsettings.js"></script>
 <!-- endbuild -->
+</body>
 
-<script type="text/javascript">
+<script>
+    var settings = <%- settings %>;
+</script>
+<script>
     angular.module('vineApp').constant('mySettings',      {
         standAlone: false
     });
 </script>
 
-</body>
 </html>

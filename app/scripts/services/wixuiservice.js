@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vineApp')
-  .service('WixUIService', function WixUIService() {
+  .service('WixUIService', function () {
         return {
           init: function(){
               Wix.UI.initialize({});

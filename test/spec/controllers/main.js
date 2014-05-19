@@ -18,7 +18,7 @@ describe('Controller: MainCtrl', function () {
     wixservice = jasmine.createSpyObj('wixService', ['navigate', 'pushState']);
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
-      Wixservice: wixservice,
+      Wixervice: wixservice,
       mySettings: mySettings
     });
   }));
