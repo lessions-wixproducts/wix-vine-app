@@ -18,11 +18,6 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-
-    <script>
-        var settings = <%- settings %>;
-    </script>
-
     <style wix-style>
         body {
             font: {{style.fontStyle}};
@@ -94,6 +89,9 @@
 <script src="scripts/services/appsettings.js"></script>
 <!-- endbuild -->
 
+<script>
+    var settings = <%- settings %>;
+</script>
 <script type="text/javascript">
     angular.module('vineApp').constant('mySettings',      {
         standAlone: false

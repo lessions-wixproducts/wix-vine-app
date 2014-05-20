@@ -9,6 +9,7 @@ angular.module('vineApp').factory('Settings', ['$resource', function ($resource)
     }
 
     var updateSettingsUrl = '/app/settingsUpdate?instance=' + getParameterByName('instance') + "&compId=:compId";
+
     return $resource(updateSettingsUrl);
 }]);
 

@@ -3,6 +3,7 @@ var Authentication = require('./authentication.js');
 var routes = require('./routes.js');
 var app = express();
 
+app.use(express.bodyParser());
 app.use(express.static(__dirname + '/app'));
 
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
