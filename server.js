@@ -19,7 +19,7 @@ app.get('/vine/:videoId', routes.vineGetVideo);
 //Templates
 app.get('/widget', authenticate, routes.widget);
 app.get('/settings', authenticate, routes.settings);
-app.post('/app/settingsupdate', routes.settingsUpdate);
+app.post('/app/settingsupdate', authenticate, routes.settingsUpdate);
 app.get('/widget/search/:q?/:size?', authenticate, routes.search);
 
 

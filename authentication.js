@@ -21,7 +21,7 @@ function Authentication() {
 
             console.log("Once you've reached this point you're good to use the Wix API, otherwise an exception will be thrown.");
 
-            req.key = instance;
+            req.wixInstance = instanceId;
             req.wixAPI = wixAPI;
             next();
 

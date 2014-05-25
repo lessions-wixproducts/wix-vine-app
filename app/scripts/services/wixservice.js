@@ -20,9 +20,6 @@ angular.module('vineApp')
             },
             refreshAppByCompIds: function (compId) {
                 return Wix.Settings.refreshAppByCompIds(compId);
-            },
-            getInstanceId: function() {
-                return Wix.Utils.getInstanceId();
             }
         };
   });

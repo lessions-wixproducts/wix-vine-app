@@ -8,11 +8,11 @@ var db = require("mongojs").connect(dbConfig.url, dbConfig.collections);
 exports.widget = function(req, res){
     console.log (req.method + " " + req.url);
     getSettings(req, function(data){
-        res.render('index', { settings: data });
+        res.render('index', { settings: JSON.stringify(data) });
     })
 };
 
-/**
+/**JSON.stringify(data)
  * Parses the Post Message parameters
  * @param request parameters
  * @returns {string} concatenated query params
@@ -27,15 +27,20 @@ function getQueryString(q) {
 
 exports.search = function(req, res){
     console.log (req.method + " " + req.url);
-    var q = req.params.q || 'wix';
-    var size = req.params.size || '6';
-    var query = getQueryString(req.query);
+    getSettings(req, function(settings){
 
-    /**
-     * The Wix SDK must be provided with the PostMessage parameters.
-     * When redirecting, it's crucial to pass on those parameters.
-     */
-    res.redirect(query + '#/search/' + q + '/' + size); // Adding a proceeding '/' will result in SDK parameter parsing errors
+        var q = req.params.q;
+        if (q == "undefined")
+            q = settings.defaultSearchTerm;
+        var size = req.params.size || '6';
+        var query = getQueryString(req.query);
+
+        /**
+         * The Wix SDK must be provided with the PostMessage parameters.
+         * When redirecting, it's crucial to pass on those parameters.
+         */
+        res.redirect(query + '#/search/' + q + '/' + size); // Adding a proceeding '/' will result in SDK parameter parsing errors
+    });
 };
 
 exports.settings = function(req, res){
@@ -43,7 +48,7 @@ exports.settings = function(req, res){
     var query = getQueryString(req.query);
 
     getSettings(req, function(data){
-        req.settings = data;
+        req.settings = JSON.stringify(data);
 
         /**
          * The Wix SDK must be provided with the PostMessage parameters.
@@ -54,7 +59,7 @@ exports.settings = function(req, res){
 };
 
 /**
- * From The docs:
+ * From The docs: http://dev.wix.com/docs/display/DRAF/App+Endpoints :
  * There are a few things you can do to protect your App against security issues:
 
  1. For each call to the App settings endpoint you should validate, on the server side, that the value of the permission parameter that is part of the signed instance is ‘OWNER’. Otherwise you shouldn’t display the content of the App settings and instead display a message ‘permission denied’.
@@ -66,18 +71,21 @@ exports.settings = function(req, res){
  * POST settings update.
  */
 exports.settingsUpdate = function(req, res){
-    db.settings.update(
-        { instance: req.query.instance, compId: req.query.compId },
-        { $set: { settings: req.body.settings }},
-        { upsert: true },
-        function(err, saved) {
-            res.end();
-        }
-    );
+    if (req.wixInstance) {
+
+        db.settings.update(
+            { instance: req.wixInstance },
+            { $set: { settings: req.body.settings }},
+            { upsert: true },
+            function (err, saved) {
+                res.end();
+            }
+        )
+    }
 };
 
 function getSettings(req, callback){
-    db.settings.findOne({instance: req.query.instance, compId: req.query.compId}, function(err, result) {
+    db.settings.findOne({instance: req.wixInstance}, function(err, result) {
         if( err || !result) {
             callback('[]');
         }

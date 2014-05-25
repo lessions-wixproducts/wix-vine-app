@@ -1,6 +1,6 @@
 <div class="row content">
     <h1>{{keyword}}</h1>
-    <div class="video" ng-repeat="video in videos">
+    <div class="video" ng-repeat="video in videos" ng-class="{'video-small': settings.videoSize == 0, 'video-medium': settings.videoSize == 1, 'video-large': settings.videoSize == 2}">
         <vinevideo></vinevideo>
     </div>
 </div>

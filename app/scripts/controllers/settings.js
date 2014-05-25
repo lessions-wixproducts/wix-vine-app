@@ -16,17 +16,32 @@ angular.module('vineApp')
                     $scope.store();
                 }
             });
+
+            $scope.$watch('settings.videoSize', function (val, old) {
+                $scope.settings.videoSize = parseInt(val);
+                if (old && val !== old) {
+                    $scope.store();
+                }
+            });
+
+            $scope.$watch('settings.defaultSearchTerm', function (val, old) {
+                $scope.settings.defaultSearchTerm = val;
+                if (val !== old) {
+                    $scope.store();
+                }
+            });
         };
 
         $scope.store = function () {
             var compId = WixService.getOrigCompId();
-            Settings.save({"compId": compId}, JSON.stringify({settings: JSON.stringify($scope.settings)}),
-            function success() {
-                WixService.refreshAppByCompIds(compId);
-            },
-            function err(data) {
-                console.log("error: "+ data);
-            });
+            Settings.save({"compId": compId}, {settings: $scope.settings},
+                function success() {
+                    WixService.refreshAppByCompIds(compId);
+                },
+                function err(data) {
+                    console.log("error: "+ data);
+                }
+            );
         }
 
     });

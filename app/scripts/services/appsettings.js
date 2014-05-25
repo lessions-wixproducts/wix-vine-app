@@ -18,7 +18,7 @@ angular.module('vineApp').factory("SettingsService", function () {
         settings: function ($window) {
             var settings = $.extend(
                 {
-                    'numOfVideos': 7
+                    numOfVideos: '7'
                 },
                 $window.settings);
             return settings;

@@ -43,6 +43,21 @@ body {
     height: 476px;
 }
 
+.video-small {
+    width: 200px;
+    height: 376px;
+}
+
+.video-medium {
+    width: 300px;
+    height: 476px;
+}
+
+.video-large {
+    width: 400px;
+    height: 576px;
+}
+
 #video-container {
     border: 1px solid #D7D6D1;
     border-radius: 4px;

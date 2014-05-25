@@ -38,14 +38,14 @@
             <div class="acc-content">
                 <ul class="list">
                     <li wix-label="Video Size: ">
-                        <div wix-param="multiSize" wix-ctrl="ButtonGroup">
-                            <button value="mini">Mini</button>
-                            <button value="medium">Medium</button>
-                            <button value="large">Large</button>
+                        <div ng-video-size ng-model="settings.videoSize" wix-model="videoSize" wix-ctrl="ButtonGroup">
+                            <button value="0">Mini</button>
+                            <button value="1">Medium</button>
+                            <button value="2">Large</button>
                         </div>
                     </li>
                     <li wix-label="Number of Videos:">
-                        <div ng-num-of-videos ng-model="settings.numOfVideos" wix-model="numOfVideos" wix-ctrl="Spinner" wix-options="{ maxValue:10, value: 6, size: 'small' }"></div>
+                        <div ng-num-of-videos ng-model="settings.numOfVideos" wix-model="numOfVideos" wix-ctrl="Spinner" wix-options="{ maxValue:12, value: 6, size: 'small' }"></div>
                     </li>
                 </ul>
             </div>
@@ -55,7 +55,7 @@
             <div class="acc-content">
                 <ul class="list">
                     <li wix-label="Default Search Term:">
-                        <div wix-model="defaultSearchTerm" wix-ctrl="Input" wix-options="{placeholder: '6'}"></div>
+                        <div ng-default-search-term ng-model="settings.defaultSearchTerm" wix-model="defaultSearchTerm" wix-ctrl="Input" wix-options="{placeholder: 'wix'}"></div>
                     </li>
                 </ul>
             </div>
