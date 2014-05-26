@@ -26,7 +26,7 @@ angular
       })
       .when('/search/:q/:size', {
         templateUrl: '/views/results.html',
-        controller: 'SearchCtrl'
+        controller: 'ResultsCtrl'
       })
       .when('/settings', {
         templateUrl: '/views/settings.html',

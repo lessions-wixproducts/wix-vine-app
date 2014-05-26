@@ -4,20 +4,14 @@
     <div class="accordion" wix-ctrl="Accordion">
         <div class="acc-pane">
             <h3>Color Settings</h3>
-            <div class="accordion" wix-ctrl="Accordion">
-                <div class="acc-pane">
+            <div class="acc-pane">
+                <div class="acc-content">
                     <ul class="list">
-                        <li wix-label="Search Button">
-                            <div class="acc-content">
-                                <ul class="list">
-                                    <li wix-label="Button Background Color:">
-                                        <div wix-param="bgColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-25'}"></div>
-                                    </li>
-                                    <li wix-label="Button Text Color:">
-                                        <div wix-param="textColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-7'}"></div>
-                                    </li>
-                                </ul>
-                            </div>
+                        <li wix-label="Search Button Background Color:">
+                            <div wix-param="bgColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-25'}"></div>
+                        </li>
+                        <li wix-label="Search Button Text Color:">
+                            <div wix-param="textColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-7'}"></div>
                         </li>
                     </ul>
                 </div>
@@ -38,7 +32,7 @@
             <div class="acc-content">
                 <ul class="list">
                     <li wix-label="Video Size: ">
-                        <div ng-video-size ng-model="settings.videoSize" wix-model="videoSize" wix-ctrl="ButtonGroup">
+                        <div ng-video-size ng-model="settings.videoSize" wix-model="videoSize" wix-ctrl="ButtonGroup" wix-options="{value: 1}">
                             <button value="0">Mini</button>
                             <button value="1">Medium</button>
                             <button value="2">Large</button>

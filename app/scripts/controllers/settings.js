@@ -34,7 +34,7 @@ angular.module('vineApp')
 
         $scope.store = function () {
             var compId = WixService.getOrigCompId();
-            Settings.save({"compId": compId}, {settings: $scope.settings},
+            Settings.save({"compId": compId}, {settings: JSON.stringify($scope.settings)},
                 function success() {
                     WixService.refreshAppByCompIds(compId);
                 },

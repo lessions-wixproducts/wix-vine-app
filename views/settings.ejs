@@ -18,20 +18,77 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-
     <style wix-style>
         body {
-            font: {{style.fontStyle}};
+        font: {{style.fontStyle}};
         }
 
         #mybutton {
-            background-color: {{style.bgColor color-2}};
-            color: {{style.textColor color-2}};
+        background-color: {{style.bgColor color-2}};
+        color: {{style.textColor color-2}};
         }
     </style>
 </head>
 <body wix-ui ng-app="vineApp">
-<div class="container" ng-view=""></div>
+
+<div ng-controller="SettingsCtrl" ng-init="init()">
+
+    <div class="accordion" wix-ctrl="Accordion">
+        <div class="acc-pane">
+            <h3>Color Settings</h3>
+            <div class="acc-pane">
+                <div class="acc-content">
+                    <ul class="list">
+                        <li wix-label="Search Button Background Color:">
+                            <div wix-param="bgColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-25'}"></div>
+                        </li>
+                        <li wix-label="Search Button Text Color:">
+                            <div wix-param="textColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-7'}"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="acc-pane">
+            <h3>Font Settings</h3>
+            <div class="acc-content">
+                <ul class="list">
+                    <li wix-label="Font Style:">
+                        <div wix-param="fontStyle" wix-ctrl="FontStylePicker"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="acc-pane">
+            <h3>Video Settings</h3>
+            <div class="acc-content">
+                <ul class="list">
+                    <li wix-label="Video Size: ">
+                        <div ng-video-size ng-model="settings.videoSize" wix-model="videoSize" wix-ctrl="ButtonGroup" wix-options="{value: 1}">
+                            <button value="0">Mini</button>
+                            <button value="1">Medium</button>
+                            <button value="2">Large</button>
+                        </div>
+                    </li>
+                    <li wix-label="Number of Videos:">
+                        <div ng-num-of-videos ng-model="settings.numOfVideos" wix-model="numOfVideos" wix-ctrl="Spinner" wix-options="{ maxValue:12, value: 6, size: 'small' }"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="acc-pane">
+            <h3>Search Settings</h3>
+            <div class="acc-content">
+                <ul class="list">
+                    <li wix-label="Default Search Term:">
+                        <div ng-default-search-term ng-model="settings.defaultSearchTerm" wix-model="defaultSearchTerm" wix-ctrl="Input" wix-options="{placeholder: 'wix'}"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -89,15 +146,15 @@
 <script src="scripts/services/wixuiservice.js"></script>
 <script src="scripts/services/appsettings.js"></script>
 <!-- endbuild -->
-</body>
 
 <script>
     var settings = <%- settings %>;
 </script>
-<script>
+<script type="text/javascript">
     angular.module('vineApp').constant('mySettings',      {
         standAlone: false
     });
 </script>
 
+</body>
 </html>

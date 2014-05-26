@@ -8,7 +8,7 @@ var db = require("mongojs").connect(dbConfig.url, dbConfig.collections);
 exports.widget = function(req, res){
     console.log (req.method + " " + req.url);
     getSettings(req, function(data){
-        res.render('index', { settings: JSON.stringify(data) });
+        res.render('index', { settings: data });
     })
 };
 
@@ -48,13 +48,7 @@ exports.settings = function(req, res){
     var query = getQueryString(req.query);
 
     getSettings(req, function(data){
-        req.settings = JSON.stringify(data);
-
-        /**
-         * The Wix SDK must be provided with the PostMessage parameters.
-         * When redirecting, it's crucial to pass on those parameters.
-         */
-        res.redirect(query + '#/settings'); // Adding a proceeding '/' will result in SDK parameter parsing errors
+        res.render('settings', { settings: data });
     });
 };
 
@@ -75,7 +69,7 @@ exports.settingsUpdate = function(req, res){
 
         db.settings.update(
             { instance: req.wixInstance },
-            { $set: { settings: req.body.settings }},
+            { $set: { settings: JSON.parse(req.body.settings) }},
             { upsert: true },
             function (err, saved) {
                 res.end();
@@ -84,6 +78,13 @@ exports.settingsUpdate = function(req, res){
     }
 };
 
+exports.getSettings = function(req, res){
+    getSettings(req, function(data){
+        res.json( JSON.parse(data) );
+    });
+};
+
+
 function getSettings(req, callback){
     db.settings.findOne({instance: req.wixInstance}, function(err, result) {
         if( err || !result) {
@@ -91,7 +92,7 @@ function getSettings(req, callback){
         }
         else{
             console.log(result.settings);
-            callback(result.settings);
+            callback(JSON.stringify(result.settings));
         }
     });
 }
