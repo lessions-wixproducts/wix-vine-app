@@ -42,10 +42,13 @@ angular.module('vineApp').directive('ngVideoSize', ['WixService', '$timeout', fu
             WixService.onChange('videoSize', function (value, key) {
                 if (value) {
 
-                    if ((value.value !== '') && (scope.settings.videoSize !== value.value)) {
-                        scope.$apply(function () {
-                            scope.settings.videoSize = value.value;
-                        });
+                    if (value.value) {
+
+                        if ((value.value !== '') && (scope.settings.videoSize !== value.value)) {
+                            scope.$apply(function () {
+                                scope.settings.videoSize = parseInt(value.value);
+                            });
+                        }
                     }
                 }
             });
