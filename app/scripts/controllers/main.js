@@ -13,6 +13,11 @@ angular.module('vineApp')
             if(mySettings.standAlone){
                 $location.path('search/' + q + '/' + $scope.settings.numOfVideos);
             } else {
+
+                if (!q) {
+                    q = $scope.settings.defaultSearchTerm;
+                }
+
                 WixService.navigate('search/' + q + '/' + $scope.settings.numOfVideos, function (error) {
                     console.log("error: " + error);
                 });
