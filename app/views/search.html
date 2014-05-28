@@ -6,7 +6,7 @@
     <form class="form-inline" ng-submit="search(q)">
         <div>
             <input type="text" class="form-control" ng-model="q" placeholder="Search vine.co" tabindex="1" focused="focused">
-            <button id="mybutton" type="submit" ng-click="search(q)" class="btn btn-primary">Search</button>
+            <button id="mybutton" ng-hide="!settings.showSearchButton" type="submit" ng-click="search(q)" class="btn btn-primary">Search</button>
         </div>
     </form>
 </div>

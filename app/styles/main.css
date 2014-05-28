@@ -83,11 +83,33 @@ body {
     position: absolute;
 }
 
-.meta .avatar {
+.meta {
     width: 30px;
     height: 30px;
     display: inline-block;
     border-radius: 25px;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 25px;
+}
+
+.avatar-small {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar-medium {
+    width: 30px;
+    height: 30px;
+}
+
+.avatar-large {
+    width: 40px;
+    height: 40px;
 }
 
 .post-content {

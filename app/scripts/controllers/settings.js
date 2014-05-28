@@ -24,6 +24,27 @@ angular.module('vineApp')
                 }
             });
 
+            $scope.$watch('settings.avatarSize', function (val, old) {
+                $scope.settings.avatarSize = parseInt(val);
+                if (val !== old) {
+                    $scope.store();
+                }
+            });
+
+            $scope.$watch('settings.showAvatar', function (val, old) {
+                $scope.settings.showAvatar = val;
+                if (val !== old) {
+                    $scope.store();
+                }
+            });
+
+            $scope.$watch('settings.showSearchButton', function (val, old) {
+                $scope.settings.showSearchButton = val;
+                if (val !== old) {
+                    $scope.store();
+                }
+            });
+
             $scope.$watch('settings.defaultSearchTerm', function (val, old) {
                 $scope.settings.defaultSearchTerm = val;
                 if (val !== old) {

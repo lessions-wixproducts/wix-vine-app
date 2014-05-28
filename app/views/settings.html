@@ -28,10 +28,13 @@
             </div>
         </div>
         <div class="acc-pane">
-            <h3>Video Settings</h3>
+            <h3>Display Settings</h3>
             <div class="acc-content">
                 <ul class="list">
-                    <li wix-label="Video Size: ">
+                    <li wix-label="Search Button:">
+                        <div ng-show-search-button ng-model="settings.showSearchButton" wix-model="showSearchButton" wix-ctrl="Checkbox" wix-options="{checked:true}"></div>
+                    </li>
+                    <li wix-label="Video Size:">
                         <div ng-video-size ng-model="settings.videoSize" wix-model="videoSize" wix-ctrl="ButtonGroup" wix-options="{value: 1}">
                             <button value="0">Mini</button>
                             <button value="1">Medium</button>
@@ -40,6 +43,16 @@
                     </li>
                     <li wix-label="Number of Videos:">
                         <div ng-num-of-videos ng-model="settings.numOfVideos" wix-model="numOfVideos" wix-ctrl="Spinner" wix-options="{ maxValue:12, value: 6, size: 'small' }"></div>
+                    </li>
+                    <li wix-label="Avatar Size">
+                        <div ng-avatar-size ng-model="settings.avatarSize" wix-model="avatarSize" wix-ctrl="Radio">
+                            <div data-radio-value="0">small</div>
+                            <div data-radio-value="1">medium</div>
+                            <div data-radio-value="2">large</div>
+                        </div>
+                    </li>
+                    <li wix-label="Display Avatar">
+                        <div ng-show-avatar ng-model="settings.showAvatar" wix-model="showAvatar" wix-ctrl="Checkbox" wix-options="{checked:true}"></div>
                     </li>
                 </ul>
             </div>

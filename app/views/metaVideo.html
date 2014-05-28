@@ -1,5 +1,5 @@
-<div class="author">
-    <img ng-src="{{ video.avatarUrl }}" class="avatar">
+<div class="author" ng-hide="!settings.showAvatar">
+    <img ng-src="{{ video.avatarUrl }}" class="avatar" ng-class="{'avatar-small': settings.avatarSize == 0, 'avatar-medium': settings.avatarSize == 1, 'avatar-large': settings.avatarSize == 2}">
 </div>
 <div class="post-content">
     <p class="description">

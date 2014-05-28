@@ -56,6 +56,37 @@ angular.module('vineApp').directive('ngVideoSize', ['WixService', '$timeout', fu
     }
 }]);
 
+angular.module('vineApp').directive('ngAvatarSize', ['WixService', '$timeout', function (WixService, $timeout) {
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function (scope, $element, attrs, ngModel) {
+            if (!ngModel) return;
+
+            ngModel.$render = function () {
+                $timeout(function () {
+                    WixService.set('avatarSize', scope.settings.avatarSize)
+                }, 0);
+            };
+
+            // The object received is consisted of a value and an index
+            WixService.onChange('avatarSize', function (value, key) {
+                if (value) {
+
+                    if (value.value) {
+
+                        if ((value.value !== '') && (scope.settings.avatarSize !== value.value)) {
+                            scope.$apply(function () {
+                                scope.settings.avatarSize = parseInt(value.value);
+                            });
+                        }
+                    }
+                }
+            });
+        }
+    }
+}]);
+
 
 angular.module('vineApp').directive('ngDefaultSearchTerm', ['WixService', '$timeout', function (WixService, $timeout) {
     return {
@@ -75,6 +106,55 @@ angular.module('vineApp').directive('ngDefaultSearchTerm', ['WixService', '$time
                 if ((value !== '') && (scope.settings.defaultSearchTerm !== value)) {
                     scope.$apply(function () {
                         scope.settings.defaultSearchTerm = value;
+                    });
+                }
+            });
+        }
+    }
+}]);
+
+
+angular.module('vineApp').directive('ngShowSearchButton', ['WixService', '$timeout', function (WixService, $timeout) {
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function (scope, $element, attrs, ngModel) {
+            if (!ngModel) return;
+
+            ngModel.$render = function () {
+                $timeout(function () {
+                    WixService.set('showSearchButton', scope.settings.showSearchButton)
+                }, 0);
+            };
+
+            WixService.onChange('showSearchButton', function (value, key) {
+                if ((value !== '') && (scope.settings.showSearchButton !== value)) {
+                    scope.$apply(function () {
+                        scope.settings.showSearchButton = value;
+                    });
+                }
+            });
+        }
+    }
+}]);
+
+angular.module('vineApp').directive('ngShowAvatar', ['WixService', '$timeout', function (WixService, $timeout) {
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function (scope, $element, attrs, ngModel) {
+            if (!ngModel) return;
+
+            ngModel.$render = function () {
+                $timeout(function () {
+                    WixService.set('showAvatar', scope.settings.showAvatar)
+                }, 0);
+            };
+
+            WixService.onChange('showAvatar', function (value, key) {
+                if ((value !== '') && (scope.settings.showAvatar !== value)) {
+                    scope.$apply(function () {
+                        scope.settings.showAvatar = value;
                     });
                 }
             });
