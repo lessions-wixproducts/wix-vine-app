@@ -31,6 +31,13 @@ angular.module('vineApp')
                 }
             });
 
+            $scope.$watch('settings.resultTextStyle', function (val, old) {
+                $scope.settings.resultTextStyle = val;
+                if (val !== old) {
+                    $scope.store();
+                }
+            });
+
             $scope.$watch('settings.showAvatar', function (val, old) {
                 $scope.settings.showAvatar = val;
                 if (val !== old) {

@@ -88,6 +88,38 @@ angular.module('vineApp').directive('ngAvatarSize', ['WixService', '$timeout', f
 }]);
 
 
+angular.module('vineApp').directive('ngResultTextStyle', ['WixService', '$timeout', function (WixService, $timeout) {
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function (scope, $element, attrs, ngModel) {
+            if (!ngModel) return;
+
+            ngModel.$render = function () {
+                $timeout(function () {
+                    WixService.set('resultTextStyle', scope.settings.resultTextStyle)
+                }, 0);
+            };
+
+            // The object received is consisted of a value and an index
+            WixService.onChange('resultTextStyle', function (value, key) {
+                if (value) {
+
+                    if (value.value) {
+
+                        if ((value.value !== '') && (scope.settings.resultTextStyle !== value.value)) {
+                            scope.$apply(function () {
+                                scope.settings.resultTextStyle = value.value;
+                            });
+                        }
+                    }
+                }
+            });
+        }
+    }
+}]);
+
+
 angular.module('vineApp').directive('ngDefaultSearchTerm', ['WixService', '$timeout', function (WixService, $timeout) {
     return {
         restrict: 'A',

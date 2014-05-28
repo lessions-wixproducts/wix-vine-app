@@ -87,6 +87,13 @@
                     <li wix-label="Display Avatar">
                         <div ng-show-avatar ng-model="settings.showAvatar" wix-model="showAvatar" wix-ctrl="Checkbox" wix-options="{checked:true}"></div>
                     </li>
+                    <li wix-label="Results Title Style">
+                        <div ng-result-text-style ng-model="settings.resultTextStyle" wix-model="resultTextStyle" wix-ctrl="Dropdown" wix-options="{value:2}">
+                            <div value="short">#Wix</div>
+                            <div value="medium">#Wix (6)</div>
+                            <div value="long">Wix: showing 6 results</div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
