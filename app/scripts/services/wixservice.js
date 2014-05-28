@@ -20,6 +20,14 @@ angular.module('vineApp')
             },
             refreshAppByCompIds: function (compId) {
                 return Wix.Settings.refreshAppByCompIds(compId);
+            },
+            createPopupWindow: function() {
+                return Wix.UI.create({ctrl: 'Popup',
+                    options: {buttonSet: 'okCancel', fixed:true}});
+            },
+            createModalWindow: function() {
+                return Wix.UI.create({ctrl: 'Popup',
+                    options: {modal:true, buttonSet: 'okCancel', fixed:true}});
             }
         };
   });

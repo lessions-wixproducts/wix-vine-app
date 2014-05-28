@@ -94,6 +94,12 @@
                             <div value="long">Wix: showing 6 results</div>
                         </div>
                     </li>
+                    <li wix-label="Modal Window">
+                        <button class="uilib-btn btn-secondary" id="modalAnchorBtn" ng-click="modalOpen($event)">Open me!</button>
+                    </li>
+                    <li wix-label="Popup Window">
+                        <button class="uilib-btn btn-secondary" id="popupAnchorBtn" ng-click="popupOpen($event)">Open me too!</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -109,8 +115,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>

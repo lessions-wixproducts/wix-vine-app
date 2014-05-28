@@ -70,6 +70,19 @@ angular.module('vineApp')
                     console.log("error: "+ data);
                 }
             );
-        }
+        };
 
+        $scope.modal = WixService.createModalWindow();
+
+        $scope.modalOpen = function(event) {
+            event.stopPropagation();
+            $scope.modal.getCtrl().open();
+        };
+
+        $scope.popup = WixService.createPopupWindow();
+
+        $scope.popupOpen = function(event) {
+            event.stopPropagation();
+            $scope.popup.getCtrl().open();
+        };
     });
