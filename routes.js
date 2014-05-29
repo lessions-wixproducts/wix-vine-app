@@ -43,15 +43,6 @@ exports.search = function(req, res){
     });
 };
 
-exports.settings = function(req, res){
-    console.log (req.method + " " + req.url);
-    var query = getQueryString(req.query);
-
-    getSettings(req, function(data){
-        res.render('settings', { settings: data });
-    });
-};
-
 /**
  * From The docs: http://dev.wix.com/docs/display/DRAF/App+Endpoints :
  * There are a few things you can do to protect your App against security issues:
@@ -60,6 +51,32 @@ exports.settings = function(req, res){
  2. For each save action that is done through the App settings you should include the signed instance in the request. Before saving the new settings you should validate that this instance exists and that the initial parameter is the same.
  3. You should also check the signDate, if the date of the signature is one day older than the current date you should display a message ‘please refresh the Editor to continue editing your App’.
  */
+
+var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+// a and b are javascript Date objects
+function dateDiffInDays(a, b) {
+
+    // Discard the time and time-zone information.
+    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
+
+exports.settings = function(req, res){
+    console.log (req.method + " " + req.url);
+
+    if (req.permissions != "OWNER") {
+        res.send('Permission Denied');
+    } else if (dateDiffInDays(new Date(req.signDate), new Date()) > 1) {
+        res.send("please refresh the Editor to continue editing your App");
+    } else {
+        getSettings(req, function(data){
+            res.render('settings', { settings: data });
+        });
+    }
+};
 
 /*
  * POST settings update.
