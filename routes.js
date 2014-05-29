@@ -105,7 +105,7 @@ exports.getSettings = function(req, res){
 function getSettings(req, callback){
     db.settings.findOne({instance: req.wixInstanceId }, function(err, result) {
         if( err || !result) {
-            callback('[]');
+            callback("{ numOfVideos: 6, videoSize: 1, avatarSize: 1, resultTextStyle: 'long', showAvatar: true, showSearchButton: true, defaultSearchTerm: 'wix' }");
         }
         else{
             console.log(result.settings);
