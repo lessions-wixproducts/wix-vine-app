@@ -64,9 +64,11 @@ angular.module('vineApp').directive('ngAvatarSize', ['WixService', '$timeout', f
             if (!ngModel) return;
 
             ngModel.$render = function () {
-                $timeout(function () {
-                    WixService.set('avatarSize', scope.settings.avatarSize)
-                }, 0);
+                if (scope.settings.avatarSize) {
+                    $timeout(function () {
+                        WixService.set('avatarSize', scope.settings.avatarSize)
+                    }, 0);
+                }
             };
 
             // The object received is consisted of a value and an index

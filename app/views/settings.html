@@ -1,5 +1,4 @@
 
-
 <div ng-controller="SettingsCtrl" ng-init="init()">
 
     <div class="accordion" wix-ctrl="Accordion">
@@ -46,7 +45,7 @@
                         <div ng-num-of-videos ng-model="settings.numOfVideos" wix-model="numOfVideos" wix-ctrl="Spinner" wix-options="{ maxValue:12, value: 6, size: 'small' }"></div>
                     </li>
                     <li wix-label="Avatar Size">
-                        <div ng-avatar-size ng-model="settings.avatarSize" wix-model="avatarSize" wix-ctrl="Radio">
+                        <div ng-avatar-size ng-model="settings.avatarSize" wix-model="avatarSize" wix-ctrl="Radio" wix-options="{value: 1}">
                             <div data-radio-value="0">small</div>
                             <div data-radio-value="1">medium</div>
                             <div data-radio-value="2">large</div>
@@ -63,10 +62,14 @@
                         </div>
                     </li>
                     <li wix-label="Modal Window">
-                        <button class="uilib-btn btn-secondary" id="modalAnchorBtn" ng-click="modalOpen($event)">Open me!</button>
+                        <div wix-ctrl="Tooltip" wix-options="{placement:'bottom', text:'This doesn't do anything'}">
+                            <button class="uilib-btn btn-btn-green" id="modalAnchorBtn" ng-click="modalOpen($event)"><i class="icon-edit"></i>Open me!</button>
+                        </div>
                     </li>
                     <li wix-label="Popup Window">
-                        <button class="uilib-btn btn-secondary" id="popupAnchorBtn" ng-click="popupOpen($event)">Open me too!</button>
+                        <div wix-ctrl="Tooltip" wix-options="{placement:'top', text:'This also doesn't do anything'}">
+                            <button class="uilib-btn btn-purple" id="popupAnchorBtn" ng-click="popupOpen($event)">Open me too!</button>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -79,6 +82,41 @@
                         <div ng-default-search-term ng-model="settings.defaultSearchTerm" wix-model="defaultSearchTerm" wix-ctrl="Input" wix-options="{placeholder: 'wix'}"></div>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div class="acc-pane">
+            <h3>Buttons</h3>
+            <div class="acc-content">
+
+                <div wix-ctrl="Tabs" wix-options="{value:0}"  style="margin: 0px">
+                    <ul>
+                        <li data-tab="tab0"><div>Tab 1</div></li>
+                        <li data-tab="tab1"><div>Tab 2</div></li>
+                        <li data-tab="tab2"><div>Tab 3</div></li>
+                    </ul>
+                    <div wix-scroll="{height:200}">
+                        <div class="tab-content">
+                            <div data-tab="tab0" class="tab-pane" style="height:300px">
+                                Look at all<br/>
+                                <button class="uilib-btn">Look at</button>
+                                <button class="uilib-btn btn-secondary">all these</button>
+                                <button class="uilib-btn btn-upgrade">mother fucking</button>
+                                <button class="uilib-btn btn-black-text">buttons!</button>
+                            </div>
+                            <div data-tab="tab1" class="tab-pane">
+                                These<br/>
+                                <button class="uilib-btn btn-purple">LOOOOOKKKK</button>
+                                <button class="uilib-btn btn-btn-green">BUTTTOONNNN</button>
+                            </div>
+                            <div data-tab="tab2" class="tab-pane">
+                                Mother fucking buttons<br/>
+                                <button class="uilib-btn disabled">MOTHER</button>
+                                <button class="uilib-btn btn-small">FUCKING</button>
+                                <button class="uilib-btn btn-large">BUTTON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
