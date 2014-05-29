@@ -85,7 +85,7 @@ exports.settingsUpdate = function(req, res){
     if (req.wixInstance) {
 
         db.settings.update(
-            { instance: req.wixInstance },
+            { instance: req.wixInstanceId },
             { $set: { settings: JSON.parse(req.body.settings) }},
             { upsert: true },
             function (err, saved) {
@@ -103,7 +103,7 @@ exports.getSettings = function(req, res){
 
 
 function getSettings(req, callback){
-    db.settings.findOne({instance: req.wixInstance}, function(err, result) {
+    db.settings.findOne({instance: req.wixInstanceId }, function(err, result) {
         if( err || !result) {
             callback('[]');
         }
