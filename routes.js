@@ -30,8 +30,11 @@ exports.search = function(req, res){
     getSettings(req, function(settings){
 
         var q = req.params.q;
-        if (q == "undefined")
+
+        if (!q || q == "undefined")
             q = settings.defaultSearchTerm;
+        if (!q)
+            q = 'wix';
         var size = req.params.size || '6';
         var query = getQueryString(req.query);
 
@@ -105,7 +108,7 @@ exports.getSettings = function(req, res){
 function getSettings(req, callback){
     db.settings.findOne({instance: req.wixInstanceId }, function(err, result) {
         if( err || !result) {
-            callback("{ numOfVideos: 6, videoSize: 1, avatarSize: 1, resultTextStyle: 'long', showAvatar: true, showSearchButton: true, defaultSearchTerm: 'wix' }");
+            callback(JSON.stringify({ numOfVideos: 6, videoSize: 1, avatarSize: 1, resultTextStyle: 'long', showAvatar: true, showSearchButton: true, defaultSearchTerm: 'wix' }));
         }
         else{
             console.log(result.settings);

@@ -21,7 +21,8 @@ app.get('/widget', authenticate, routes.widget);
 app.get('/settings', authenticate, routes.settings);
 app.post('/app/settingsupdate', authenticate, routes.settingsUpdate);
 app.get('/app/settingsupdate', authenticate, routes.getSettings);
-app.get('/widget/search/:q?/:size?', authenticate, routes.search);
+app.get('/search/:q?/:size?', authenticate, routes.search);
+app.get('/results/search/:q?/:size?', authenticate, routes.search);
 
 
 

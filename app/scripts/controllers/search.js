@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('vineApp')
-    .controller('MainCtrl', function ($scope, $window, $routeParams, $location, WixService, mySettings, WixUIService, SettingsService) {
+    .controller('MainCtrl', function ($scope, $window, $routeParams, $location, WixService, mySettings, Settings) {
 
         $scope.init = function () {
-            WixUIService.init();
-            $scope.settings = SettingsService.settings($window);
+            Settings.get(function(data) {
+                $scope.settings = data;
+            });
         };
 
         $scope.search = function (q) {

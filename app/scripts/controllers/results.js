@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('vineApp')
-  .controller('ResultsCtrl', function ($scope, $routeParams, $sce, Video, DataService, Search, WixUIService, Settings) {
-
-        WixUIService.init();
+  .controller('ResultsCtrl', function ($scope, $routeParams, $sce, Video, DataService, Search, Settings) {
 
         Settings.get(function(data) {
 
