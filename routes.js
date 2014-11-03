@@ -1,8 +1,8 @@
 var vine = require('./vine.js');
 var _ = require('underscore-node');
 
-exports.widget = function(req, res){
-    res.render('index', { });
+exports.widget = function(req, res) {
+    res.render('index', { debug: req.query.debug || false});
 };
 
 exports.search = function(req, res){
@@ -13,11 +13,12 @@ exports.search = function(req, res){
         query += (key + "=" + encodeURIComponent(value) + "&");
     });
     query = query.substring(0, query.length - 1);
-    res.redirect(query + '/#/search/' + q + '/' + size);
+    res.render('search', { query: JSON.stringify(q), size: size});
+    //res.redirect(query + '/#/search/' + q + '/' + size);
 };
 
-exports.settings = function(req, res){
-    res.render('index', { });
+exports.settings = function(req, res) {
+    res.render('settings', { });
 };
 
 exports.vinePopular = function(req, res){

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('vineApp')
-  .controller('VideoCtrl', function ($scope, $routeParams, $sce, Video, DataService, Wixservice, mySettings) {
-    if(!mySettings.standAlone){
-      Wixservice.pushState('video/' + $routeParams.id);
+  .controller('VideoCtrl', function ($scope, $routeParams, $sce, Video, DataService, Wixservice, config) {
+    if(!config.standAlone){
+        Wixservice.pushState('#/video/' + $routeParams.id);
     }
 
     $scope.video = _.find(DataService.videos, function (video) {

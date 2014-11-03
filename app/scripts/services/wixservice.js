@@ -8,6 +8,12 @@ angular.module('vineApp')
           },
           pushState: function(state){
               Wix.pushState(state);
+          },
+          uiLibInit: function (obj) {
+              Wix.UI.initialize(obj);
+          },
+          addEventListener: function (name, callback) {
+              Wix.addEventListener(name, callback);
           }
         };
   });
