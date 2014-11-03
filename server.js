@@ -16,10 +16,8 @@ app.get('/vine/search/:q/:size', routes.vineSearch);
 app.get('/vine/:videoId', routes.vineGetVideo);
 
 //Templates
-app.get('/widget', routes.widget);
-app.get('/settings', routes.settings);
-app.get('/search/:q?/:size?', routes.search);
-
+app.get('/widget', authenticate, routes.widget);
+app.get('/settings', authenticate, routes.settings);
 
 
 function authenticate(req, res, next) {

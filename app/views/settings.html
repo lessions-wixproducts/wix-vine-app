@@ -8,9 +8,9 @@
             <p>Number of videos to display:</p>
             <ul class="list">
                 <li>
-                    <div ng-num-of-entries
-                    ng-model="settings.numOfEntries"
-                    wix-ctrl="Spinner" wix-model="numOfEntries"
+                    <div
+                    wix-ctrl="Spinner"
+                    wix-param="numberOfVideos"
                     wix-options="{ maxValue:500, value: 6, size: 'small' }"></div>
                 </li>
             </ul>
@@ -23,10 +23,19 @@
         <div class="acc-content">
             <p>Set the widget colors</p>
             <ul class="list">
-                <li wix-label="Video title text">
-                    <div wix-param="titleColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'color-1'}"></div>
+                <li wix-label="Descripion container">
+                    <div wix-param="searchBoxColor" wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor: 'color-1'}"></div>
                 </li>
-                <li wix-label="Background">
+                <li wix-label="Search button">
+                    <div wix-param="buttonColor " wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor: 'color-1'}"></div>
+                </li>
+                <li wix-label="Video Description">
+                    <div wix-param="descriptionColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'color-1'}"></div>
+                </li>
+                <li wix-label="Video Username">
+                    <div wix-param="usernameColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'color-1'}"></div>
+                </li>
+                <li wix-label="Video Background">
                     <div wix-param="bgColor" wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor: 'color-1'}"></div>
                 </li>
             </ul>
@@ -39,8 +48,11 @@
         <div class="acc-content">
             <p>Set the widget fonts</p>
             <ul class="list">
-                <li wix-label="Video title font">
-                    <div wix-param="titleFont" wix-ctrl="FontStylePicker"></div>
+                <li wix-label="Description">
+                    <div wix-param="descriptionFont" wix-ctrl="FontStylePicker"></div>
+                </li>
+                <li wix-label="Username">
+                    <div wix-param="usernameFont" wix-ctrl="FontStylePicker"></div>
                 </li>
             </ul>
         </div>

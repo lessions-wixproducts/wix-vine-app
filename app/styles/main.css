@@ -1,17 +1,14 @@
-/* Space out content a bit */
+html {
+    border-radius: 6px;
+}
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('fonts/glyphicons-halflings-regular.eot');
     src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
-}
-
-.container {
-    width: 1170px;
 }
 
 .jumbotron {
@@ -93,27 +90,32 @@ body {
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
 }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer p {
+    margin: 20px 0;
 }
 
 .settings .container {

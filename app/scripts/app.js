@@ -17,20 +17,6 @@ angular
                     templateUrl: '/views/settings.html',
                     controller: 'SettingsCtrl'
                 })
-        } else if (config && config.view === 'search') {
-            $routeProvider
-                .when('/search/:q/:size', {
-                    templateUrl: '/views/results.html',
-                    controller: 'SearchCtrl'
-                })
-                .when('/video/:id', {
-                    templateUrl: '/views/fullPage.html',
-                    controller: 'VideoCtrl'
-                })
-                .otherwise({
-                    templateUrl: '/views/results.html',
-                    controller: 'SearchCtrl'
-                });
         } else {
             $routeProvider
                 .when('/', {
@@ -46,8 +32,8 @@ angular
                     controller: 'VideoCtrl'
                 })
                 .when('/search/:q/:size', {
-                    templateUrl: '/views/results.html',
-                    controller: 'SearchCtrl'
+                    templateUrl: '/views/search.html',
+                    controller: 'MainCtrl'
                 })
                 .when('/settings/', {
                     templateUrl: '/views/settings.html',

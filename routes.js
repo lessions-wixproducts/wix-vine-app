@@ -5,18 +5,6 @@ exports.widget = function(req, res) {
     res.render('index', { debug: req.query.debug || false});
 };
 
-exports.search = function(req, res){
-    var q = req.params.q || 'wix';
-    var size = req.params.size || '6';
-    var query = "?";
-    _.each(req.query, function(value, key){
-        query += (key + "=" + encodeURIComponent(value) + "&");
-    });
-    query = query.substring(0, query.length - 1);
-    res.render('search', { query: JSON.stringify(q), size: size});
-    //res.redirect(query + '/#/search/' + q + '/' + size);
-};
-
 exports.settings = function(req, res) {
     res.render('settings', { });
 };
