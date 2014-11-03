@@ -1,6 +1,6 @@
 {
   "name": "vine",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {
     "ejs": "^1.0.0",
     "express": "3.5.1",
@@ -37,9 +37,5 @@
   },
   "engines": {
     "node": "0.10.x"
-  },
-  "scripts": {
-    "test": "grunt test",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt dist"
   }
 }

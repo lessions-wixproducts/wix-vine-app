@@ -1,23 +1,12 @@
 var vine = require('./vine.js');
 var _ = require('underscore-node');
 
-exports.widget = function(req, res){
-    res.render('index', { });
+exports.widget = function(req, res) {
+    res.render('index', { debug: req.query.debug || false});
 };
 
-exports.search = function(req, res){
-    var q = req.params.q || 'wix';
-    var size = req.params.size || '6';
-    var query = "?";
-    _.each(req.query, function(value, key){
-        query += (key + "=" + encodeURIComponent(value) + "&");
-    });
-    query = query.substring(0, query.length - 1);
-    res.redirect(query + '/#/search/' + q + '/' + size);
-};
-
-exports.settings = function(req, res){
-    res.render('index', { });
+exports.settings = function(req, res) {
+    res.render('settings', { });
 };
 
 exports.vinePopular = function(req, res){

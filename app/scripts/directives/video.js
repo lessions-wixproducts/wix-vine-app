@@ -9,8 +9,8 @@ angular.module('vineApp')
             if(!_.isUndefined(attrs.meta)){
                 scope.showMetaTop = true;
             }
-            scope.fullPage = function(video){
-                $location.path('/video/' + video.id);
+            scope.fullPage = function(video) {
+              $location.path('/video/' + video.id);              
             }
         }
     };
