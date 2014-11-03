@@ -39,7 +39,6 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "test": "grunt test",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt dist"
+    "test": "grunt test"
   }
 }
