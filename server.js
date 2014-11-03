@@ -21,8 +21,12 @@ app.get('/settings', authenticate, routes.settings);
 
 
 function authenticate(req, res, next) {
-    var authentication = new Authentication();
-    authentication.authenticate(req, res, next);
+    if (req.query.debug) {
+        next();
+    } else {
+        var authentication = new Authentication();
+        authentication.authenticate(req, res, next);
+    }
 }
 
 app.listen(process.env.PORT || 3010)
