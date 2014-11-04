@@ -193,15 +193,15 @@ module.exports = function (grunt) {
       }
     },
 
-      ngtemplates:  {
-          vineApp:        {
-              src:      '<%= yeoman.app %>/views/*.html',
-              dest:     'template.js',
-              options:  {
-                  usemin: '<%= yeoman.dist %>/scripts/scripts.js' // <~~ This came from the <!-- build:js --> block
-              }
-          }
-      },
+    ngtemplates:  {
+      vineApp:        {
+        src:      '<%= yeoman.app %>/views/*.html',
+        dest:     'template.js',
+        options:  {
+          usemin: '<%= yeoman.dist %>/scripts/scripts.js' // <~~ This came from the <!-- build:js --> block
+        }
+      }
+    },
 
     // The following *-min tasks produce minified files in the dist folder
     cssmin: {
@@ -351,9 +351,9 @@ module.exports = function (grunt) {
     }
   });
 
-    grunt.loadTasks('grunt-angular-templates');
+  grunt.loadTasks('grunt-angular-templates');
 
-    grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
@@ -387,9 +387,9 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-      'ngtemplates',
-      'concat',
-      'ngmin',
+    'ngtemplates',
+    'concat',
+    'ngmin',
     'copy:dist',
     'cdnify',
     'cssmin',
